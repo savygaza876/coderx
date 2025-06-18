@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillsay Kmao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden; /* Clear floats if any, and contain margins */
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Header Styling */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            border-bottom: #007bff 3px solid;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.8rem;
+        }
+
+        header nav ul {
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        header nav ul li a:hover {
+            color: #007bff;
+        }
+
+        #registerBtnHeader {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        #registerBtnHeader:hover {
+            background-color: #0056b3;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 20px 0;
+        }
+
+        #hero {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        #hero h2 {
+            font-size: 3rem; /* Screen-sized centered heading of skillsaykmao */
+            color: #333;
+            margin: 0;
+        }
+
+        #registrationSection, #skillsDisplaySection {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        #registrationSection h3, #skillsDisplaySection h3 {
+            text-align: center;
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        /* Footer Styling */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 30px;
+        }
+
+        footer .social-media-icons span {
+            margin: 0 10px;
+            cursor: pointer; /* Will be links later */
+        }
+         footer .social-media-icons span:hover {
+            color: #007bff;
+        }
+
+        footer p {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Basic Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header nav ul {
+                margin-top: 10px;
+                justify-content: center;
+            }
+
+            header nav ul li {
+                margin: 0 10px;
+            }
+
+            #registerBtnHeader {
+                margin-top: 10px;
+            }
+
+            #hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Registration Form Styling */
+        #skillRegistrationForm div {
+            margin-bottom: 15px;
+        }
+
+        #skillRegistrationForm label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        #skillRegistrationForm input[type="text"],
+        #skillRegistrationForm input[type="tel"],
+        #skillRegistrationForm input[type="url"],
+        #skillRegistrationForm textarea,
+        #skillRegistrationForm input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #skillRegistrationForm input[type="file"] {
+            padding: 3px; /* Less padding for file inputs as they have their own internal styling */
+        }
+
+        #skillRegistrationForm textarea {
+            resize: vertical; /* Allow vertical resizing, disable horizontal */
+        }
+
+        #skillRegistrationForm .payment-info {
+            background-color: #e9f5ff; /* Light blue background */
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 1px solid #bce0fd;
+        }
+
+        #skillRegistrationForm .payment-info h4 {
+            margin-top: 0;
+            color: #0056b3;
+        }
+
+        #skillRegistrationForm .payment-info p {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        #submitRegistration {
+            background-color: #28a745; /* Green color for submit */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: block; /* Make it block to center it easily if needed or take full width */
+            width: 100%; /* Take full width of its container */
+            margin-top: 20px;
+        }
+
+        #submitRegistration:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive adjustments for the form */
+        @media (max-width: 768px) {
+            #skillRegistrationForm input[type="text"],
+            #skillRegistrationForm input[type="tel"],
+            #skillRegistrationForm input[type="url"],
+            #skillRegistrationForm textarea {
+                font-size: 16px; /* Improve readability on mobile */
+            }
+        }
+
+        /* Dynamic Skill Box Styling */
+        #skillsDisplaySection {
+            /* Optional: Add grid or flex display if multiple boxes should align horizontally on larger screens */
+            /* display: grid; */
+            /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+            /* gap: 20px; */
+        }
+
+        .skill-box {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px; /* For vertical stacking; remove if using grid directly on parent */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-box h4 {
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .skill-box p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .skill-box p strong {
+            color: #333;
+        }
+
+        .skill-box .gig-images {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .skill-box .gig-images h5 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .skill-box .gig-images img {
+            max-width: 100px; /* Already set inline, but good to have a class rule */
+            height: auto;
+            border-radius: 4px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            display: inline-block; /* To allow margin and sit next to each other */
+        }
+
+        /* Responsive adjustments for skill boxes */
+        @media (min-width: 768px) {
+            #skillsDisplaySection {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 20px;
+            }
+            .skill-box {
+                margin-bottom: 0; /* Gap handles spacing in grid */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Skillsay Kmao</h1>
+            <nav>
+                <ul>
+                    <li><a href="#contact">Contact Admin</a></li>
+                    <li><a href="#affiliate">Affiliate Marketing</a></li>
+                </ul>
+            </nav>
+            <button id="registerBtnHeader">Register</button>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section id="hero">
+                <h2>Skillsay Kmao</h2>
+            </section>
+
+            <section id="registrationSection" style="display: none;">
+                <h3>Register Your Skills</h3>
+                <form id="skillRegistrationForm">
+                    <div>
+                        <label for="userName">Name:</label>
+                        <input type="text" id="userName" name="userName" required>
+                    </div>
+                    <div>
+                        <label for="userPhone">Phone Number:</label>
+                        <input type="tel" id="userPhone" name="userPhone" required>
+                    </div>
+                    <div>
+                        <label for="userArea">Area (e.g., City, State):</label>
+                        <input type="text" id="userArea" name="userArea" required>
+                    </div>
+                    <div>
+                        <label for="userSkills">Skills Details:</label>
+                        <textarea id="userSkills" name="userSkills" rows="4" required></textarea>
+                    </div>
+                    <div>
+                        <label for="userExperience">Experience:</label>
+                        <textarea id="userExperience" name="userExperience" rows="3" required></textarea>
+                    </div>
+                    <div>
+                        <label for="userGig1">Gig Picture 1:</label>
+                        <input type="file" id="userGig1" name="userGig1" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="userGig2">Gig Picture 2:</label>
+                        <input type="file" id="userGig2" name="userGig2" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="userGig3">Gig Picture 3:</label>
+                        <input type="file" id="userGig3" name="userGig3" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="userLink">Link (e.g., portfolio, website):</label>
+                        <input type="url" id="userLink" name="userLink">
+                    </div>
+                    <div class="payment-info">
+                        <h4>Payment Information:</h4>
+                        <p>Please send the registration fee via Easypaisa to:</p>
+                        <p><strong>Account Number:</strong> 03340915037</p>
+                        <p><strong>Account Name:</strong> Konain Ijaz</p>
+                        <p>(Note: Transaction success will be manually verified upon submission for this demo.)</p>
+                    </div>
+                    <button type="submit" id="submitRegistration">Submit Registration</button>
+                </form>
+            </section>
+
+            <section id="skillsDisplaySection">
+                <h3>Available Skills</h3>
+                <!-- Dynamic skill boxes will be added here by JavaScript -->
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="social-media-icons">
+                <span>WhatsApp</span> |
+                <span>Facebook</span> |
+                <span>LinkedIn</span> |
+                <span>Twitter</span> |
+                <span>TikTok</span> |
+                <span>Snapchat</span> |
+                <span>Instagram</span> |
+                <span>YouTube</span>
+            </div>
+            <p>&copy; 2024 Skillsay Kmao. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Content will be added in subsequent steps -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const registerBtnHeader = document.getElementById('registerBtnHeader');
+        const registrationSection = document.getElementById('registrationSection');
+        const skillRegistrationForm = document.getElementById('skillRegistrationForm');
+        const skillsDisplaySection = document.getElementById('skillsDisplaySection');
+
+        // Show registration form when header button is clicked
+        if (registerBtnHeader) {
+            registerBtnHeader.addEventListener('click', function() {
+                registrationSection.style.display = 'block';
+                // Scroll to the form for better UX
+                registrationSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+        if (skillRegistrationForm) {
+            skillRegistrationForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get form values
+                const userName = document.getElementById('userName').value;
+                const userPhone = document.getElementById('userPhone').value;
+                const userArea = document.getElementById('userArea').value;
+                const userSkills = document.getElementById('userSkills').value;
+                const userExperience = document.getElementById('userExperience').value;
+                const userLink = document.getElementById('userLink').value;
+
+                // Get file inputs
+                const userGig1File = document.getElementById('userGig1').files[0];
+                const userGig2File = document.getElementById('userGig2').files[0];
+                const userGig3File = document.getElementById('userGig3').files[0];
+
+                // --- Simulate Transaction Success ---
+                // In a real application, you would handle payment verification here.
+                // For this demo, we'll assume it's successful.
+                alert("Registration Submitted! Assuming transaction is successful. Your skill will now be displayed.");
+
+                // Create the skill box element
+                const skillBox = document.createElement('div');
+                skillBox.classList.add('skill-box'); // We'll style this class later
+
+                let gigImagesHTML = '';
+                if (userGig1File) {
+                    gigImagesHTML += `<img src="${URL.createObjectURL(userGig1File)}" alt="${userName}'s Gig 1 Preview" style="max-width:100px; margin:5px;">`;
+                }
+                if (userGig2File) {
+                    gigImagesHTML += `<img src="${URL.createObjectURL(userGig2File)}" alt="${userName}'s Gig 2 Preview" style="max-width:100px; margin:5px;">`;
+                }
+                if (userGig3File) {
+                    gigImagesHTML += `<img src="${URL.createObjectURL(userGig3File)}" alt="${userName}'s Gig 3 Preview" style="max-width:100px; margin:5px;">`;
+                }
+                if (!userGig1File && !userGig2File && !userGig3File) {
+                    gigImagesHTML = '<p>No gig images provided.</p>';
+                }
+
+
+                skillBox.innerHTML = `
+                    <h4>${userName}</h4>
+                    <p><strong>Area:</strong> ${userArea}</p>
+                    <p><strong>Skills:</strong> ${userSkills}</p>
+                    <p><strong>Experience:</strong> ${userExperience}</p>
+                    ${userLink ? `<p><strong>Link:</strong> <a href="${userLink}" target="_blank">${userLink}</a></p>` : ''}
+                    <div class="gig-images">
+                        <h5>Gig Images:</h5>
+                        ${gigImagesHTML}
+                    </div>
+                    <p><strong>Contact:</strong> ${userPhone}</p>
+                `;
+
+                // If it's the first skill box, remove the "Available Skills" default text or hide it
+                const defaultSkillsText = skillsDisplaySection.querySelector('h3 + p'); // Assuming a p tag might be there
+                if (skillsDisplaySection.getElementsByClassName('skill-box').length === 0 && defaultSkillsText) {
+                     // This logic needs to be more robust, for now, we just append.
+                     // If there's a placeholder like "No skills available yet", we'd remove it here.
+                }
+
+
+                skillsDisplaySection.appendChild(skillBox);
+
+                // Clear the form
+                skillRegistrationForm.reset();
+                // Hide the registration form again
+                registrationSection.style.display = 'none';
+
+                // Scroll to the newly added skill box
+                skillBox.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    });
+</script>
+</body>
+</html>
