@@ -1,0 +1,4 @@
+# Add URLs to scan, one per line
+# Example:
+# http://example.com
+# http://testsite.org
